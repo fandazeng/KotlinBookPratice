@@ -171,8 +171,13 @@ class User(_nickName: String, _age: Int) {
 //class Bus private constructor(): Car(), Run
 
 open class View {
+    constructor()
     constructor(ctx: Context)
     constructor(ctx: Context, attrs: String)
+
+    fun onClickListener() {
+
+    }
 }
 
 class MyView : View {
@@ -257,12 +262,17 @@ class Client(val name: String, val postalCode: Int) {
     }
 
     override fun equals(other: Any?): Boolean {
+        val c = other as? Client ?: return false
+        return name == c.name && postalCode == c.postalCode
+    }
+
+/*    override fun equals(other: Any?): Boolean {
         if (other == null || other !is Client) {
             return false
         }
         // 因为上面判断了类型，所以这里编译器会对 other 进行智能转换为 Client
         return name == other.name && postalCode == other.postalCode
-    }
+    }*/
 
     override fun hashCode(): Int {
         return name.hashCode() * 31 + postalCode

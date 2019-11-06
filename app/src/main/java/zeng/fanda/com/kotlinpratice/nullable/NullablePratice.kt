@@ -1,6 +1,6 @@
 package zeng.fanda.com.kotlinpratice.nullable
 
-import zeng.fanda.com.kotlinpratice.`object`.View
+import zeng.fanda.com.kotlinpratice.clazz.View
 
 /**
  *

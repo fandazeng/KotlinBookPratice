@@ -1,7 +1,6 @@
-package zeng.fanda.com.kotlinpratice.object;
+package zeng.fanda.com.kotlinpratice.clazz;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * @author 曾凡达

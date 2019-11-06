@@ -1,4 +1,4 @@
-package zeng.fanda.com.kotlinpratice.`object`
+package zeng.fanda.com.kotlinpratice.clazz
 
 import android.content.Context
 import java.io.File

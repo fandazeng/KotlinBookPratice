@@ -386,7 +386,6 @@ class Teacher(val name: String, age: Int, salary: Int) : PropertyChangeAware() {
     var salary: Int by Delegates.observable(salary, observer)
 }
 
-
 fun testPropertyChange() {
     val t = Teacher("fanda", 25, 2000)
     // SAM 构造

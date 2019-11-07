@@ -259,7 +259,6 @@ fun lookForAliceForEachWithLable() {
     personList.filter { p: Person -> p.age < 30 }
     personList.filter({ p: Person -> p.age < 30 })
 
-
 }
 
 fun testApplyThis() {

@@ -154,9 +154,9 @@ fun testFilter() {
 //    println(list.filter { it % 2 == 0 })
 //    println(list.map { it * it })
 
-//    val personList = listOf(Person("fanda", 38), Person("liuhang", 22))
+    val personList = listOf(Person("fanda", 38), Person("liuhang", 22))
     // 输出  [Person(name=fanda, age=38)]
-//    println(personList.filter { it.age > 30 })
+    println(personList.filter { it.age > 30 })
     // 输出  [fanda, liuhang]
 //    println(personList.map { it.name })
     // 成员引用的写法
@@ -169,7 +169,7 @@ fun testFilter() {
 //    println(personList.filter { it.age == personList.maxBy(Person::age)!!.age })
 //    println(personList.filter { it.age == maxAge})
 
-    val numbers = mapOf(0 to "zero", 1 to "one")
+  /*  val numbers = mapOf(0 to "zero", 1 to "one")
     // 变换值  {0=ZERO, 1=ONE}
     println(numbers.mapValues { it.value.toUpperCase() })
     // 过滤值  {0=zero}
@@ -179,7 +179,7 @@ fun testFilter() {
     println(numbers.mapKeys { it.key + 1 })
 
     // 过滤键  {1=one}
-    println(numbers.filterKeys { it > 0 })
+    println(numbers.filterKeys { it > 0 })*/
 }
 
 

@@ -2,6 +2,7 @@
 
 package zeng.fanda.com.kotlinpratice.function
 
+import java.io.File.separator
 import java.lang.IllegalArgumentException
 
 
@@ -34,6 +35,11 @@ fun main() {
     // 打乱了参数顺序，并且separator参数使用了默认值
 //    println(hasSet.joinToString(postfix = "]", prefix = "["))
 
+    val list = listOf("fanda", "liuhang")
+    println(list.joinToString())    //(fanda,liuhang)
+    println(list.joinToString { it.toUpperCase() }) //(FANDA,LIUHANG)
+    println(list.joinToString(separator = "!", transform = { it.toUpperCase() }))   //(FANDA!LIUHANG)
+
 //    println("kotlin".lastChar())
 //    print("kotlin".lastChar)
 //    print(StringBuilder("kotlin").lastChar)
@@ -49,7 +55,7 @@ fun main() {
 
 //    testVararg()
 //    testInfix()
-    testRegrex()
+//    testRegrex()
 }
 
 //常见的集合类创建
@@ -104,7 +110,7 @@ const val TAG = "TAG"
 fun String.lastChar() = get(length - 1)
 
 
-// 终极版本，用扩展函数的方式实现
+/*// 终极版本，用扩展函数的方式实现
 @JvmOverloads
 fun <T> Collection<T>.joinToString(
     separator: String = ",",
@@ -114,7 +120,45 @@ fun <T> Collection<T>.joinToString(
     val builder = StringBuilder(prefix)
     for ((index, element) in withIndex()) {
         if (index > 0) builder.append(separator)
+        // 使用 toString 方法将对象转换为字符串
         builder.append(element)
+    }
+    builder.append(postfix)
+    return builder.toString()
+}*/
+
+// 终极版本，用扩展函数的方式实现并带有 lambda 参数
+/*@JvmOverloads
+fun <T> Collection<T>.joinToString(
+    separator: String = ",",
+    prefix: String = "(",
+    postfix: String = ")",
+    transform: (T) -> String = { it.toString() }    // 默认实现
+): String {
+    val builder = StringBuilder(prefix)
+    for ((index, element) in withIndex()) {
+        if (index > 0) builder.append(separator)
+        // 使用函数类型的参数
+        builder.append(transform(element))
+    }
+    builder.append(postfix)
+    return builder.toString()
+}*/
+
+// 终极版本，用扩展函数的方式实现并带有 lambda 参数，但带 null 默认值
+@JvmOverloads
+fun <T> Collection<T>.joinToString(
+    separator: String = ",",
+    prefix: String = "(",
+    postfix: String = ")",
+    transform: ((T) -> String)? = null   // 声明一个函数类型可空的参数
+): String {
+    val builder = StringBuilder(prefix)
+    for ((index, element) in withIndex()) {
+        if (index > 0) builder.append(separator)
+        // 安全调用，Elvis 运算符
+        var result = transform?.invoke(element) ?: element.toString()
+        builder.append(result)
     }
     builder.append(postfix)
     return builder.toString()

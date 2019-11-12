@@ -421,7 +421,9 @@ fun testCompanion() {
     C.func()
 }
 
-class Cat {
+open class Animal {}
+
+class Cat : Animal() {
     object ObjectCat {
         val age = 5
         fun run() {

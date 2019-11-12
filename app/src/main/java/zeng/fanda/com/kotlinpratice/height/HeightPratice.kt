@@ -149,6 +149,7 @@ val log = listOf(
 fun getWindowsAverage() {
     val averageWindowsDuration = log.filter { it.os == OS.WINDOWS }.map(SiteVisit::duration).average()
     println(averageWindowsDuration) //23.0
+
 }
 
 fun getMobileAverage() {
